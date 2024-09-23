@@ -63,7 +63,7 @@ const Projects = ({ onHoverChange, onHover }) => {
               <p className='desc'>This project is a food delivery app developed using React. It is primarily designed to practice and gain experience in web application development.</p>
               <div className='buttons'>
                 <a 
-                  href='#' 
+                  href='https://learn-react-food-delivery-project.vercel.app/' 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className='live-demo'
@@ -83,12 +83,19 @@ const Projects = ({ onHoverChange, onHover }) => {
                 </a>
               </div>
             </div>
-            <figure 
-              onMouseEnter={() => onHoverChange(true)}
-              onMouseLeave={() => onHoverChange(false)}
+            <a 
+              className='link' 
+              href='https://learn-react-food-delivery-project.vercel.app/'
+              target="_blank" 
+              rel="noopener noreferrer" 
             >
-              <img src="/food_del.png" alt="card-one" />
-            </figure>
+              <figure 
+                onMouseEnter={() => onHoverChange(true)}
+                onMouseLeave={() => onHoverChange(false)}
+              >
+                <img src="/food_del.png" alt="card-one" />
+              </figure>
+            </a>
           </div>
         </li>
         <li className="card" id="card-2">
@@ -98,7 +105,7 @@ const Projects = ({ onHoverChange, onHover }) => {
               <p className='desc'>This project is a Spotify clone developed using React. It is primarily designed to practice and gain experience in web application development.</p>
               <div className='buttons'>
                 <a 
-                  href='#' 
+                  href='https://learn-react-spotify-clone-project.vercel.app/' 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className='live-demo'
@@ -118,12 +125,19 @@ const Projects = ({ onHoverChange, onHover }) => {
                 </a>
               </div>
             </div>
-            <figure 
-              onMouseEnter={() => onHoverChange(true)}
-              onMouseLeave={() => onHoverChange(false)}
+            <a 
+              className='link'
+              href='https://learn-react-spotify-clone-project.vercel.app/'
+              target="_blank" 
+              rel="noopener noreferrer"
             >
-              <img src="/spotify.png" alt="card-two" />
-            </figure>
+              <figure 
+                onMouseEnter={() => onHoverChange(true)}
+                onMouseLeave={() => onHoverChange(false)}
+              >
+                <img src="/spotify.png" alt="card-two" />
+              </figure>
+            </a>
           </div>
         </li>
         <li className="card" id="card-3">
@@ -133,7 +147,7 @@ const Projects = ({ onHoverChange, onHover }) => {
               <p className='desc'>This project is a chat application developed using React. It is primarily designed to practice and gain experience in web application development.</p>
               <div className='buttons'>
                 <a 
-                  href='#' 
+                  href='https://learn-react-chat-app.vercel.app/' 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className='live-demo'
@@ -153,12 +167,21 @@ const Projects = ({ onHoverChange, onHover }) => {
                 </a>
               </div>
             </div>
-            <figure 
-              onMouseEnter={() => onHoverChange(true)}
-              onMouseLeave={() => onHoverChange(false)}
+
+
+            <a 
+              className='link' 
+              href='https://learn-react-chat-app.vercel.app/'
+              target="_blank" 
+              rel="noopener noreferrer" 
             >
-              <img src="chat_app.png" alt="card-three" />
-            </figure>
+              <figure 
+                onMouseEnter={() => onHoverChange(true)}
+                onMouseLeave={() => onHoverChange(false)}
+              >
+                <img src="chat_app.png" alt="card-three" />
+              </figure>
+            </a>
           </div>
         </li>
         <li className="card" id="card-4">
@@ -168,7 +191,7 @@ const Projects = ({ onHoverChange, onHover }) => {
               <p className='desc'>This project is an AI chat application developed using React. It is primarily designed to practice and gain experience in web application development.</p>
               <div className='buttons'>
                 <a 
-                  href='#' 
+                  href='https://learn-react-ai-chat.vercel.app/' 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className='live-demo'
@@ -188,12 +211,15 @@ const Projects = ({ onHoverChange, onHover }) => {
                 </a>
               </div>
             </div>
-            <figure 
-              onMouseEnter={() => onHoverChange(true)}
-              onMouseLeave={() => onHoverChange(false)}
-            >
-              <img src="ai_chat.png" alt="card-four" />
-            </figure>
+
+            <a className='link' href='https://learn-react-ai-chat.vercel.app/'>
+              <figure 
+                onMouseEnter={() => onHoverChange(true)}
+                onMouseLeave={() => onHoverChange(false)}
+              >
+                <img src="ai_chat.png" alt="card-four" />
+              </figure>
+            </a>
           </div>
         </li>
       </ul>

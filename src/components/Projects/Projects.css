@@ -115,11 +115,15 @@
   padding: 2em;
 }
 
-.card-content > figure > img {
+.card-content figure img {
   width: 100%; 
   height: auto; 
   object-fit: cover; 
   border-radius: .4em;
+}
+
+.link {
+  cursor: none;
 }
 
 @media (max-width: 900px) {
