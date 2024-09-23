@@ -135,7 +135,7 @@
 .skills-column:hover {
     background-color: white;
     color: black;
-    transform: scale(1.05) !important;
+    transform: scale(1.05);
     
 }
 
