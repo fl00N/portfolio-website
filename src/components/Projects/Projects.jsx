@@ -212,7 +212,12 @@ const Projects = ({ onHoverChange, onHover }) => {
               </div>
             </div>
 
-            <a className='link' href='https://learn-react-ai-chat.vercel.app/'>
+            <a 
+              className='link'
+              href='https://learn-react-ai-chat.vercel.app/'
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <figure 
                 onMouseEnter={() => onHoverChange(true)}
                 onMouseLeave={() => onHoverChange(false)}
