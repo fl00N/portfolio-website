@@ -22,6 +22,10 @@
 
 .skills {
     height: 160vh;
+
+    @media (max-width: 376px) {
+        height: 200vh !important;
+    }
 }
 
 .container {
