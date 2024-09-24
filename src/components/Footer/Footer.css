@@ -58,6 +58,10 @@
     width: 200px;
     height: 60px;
     cursor: none;
+
+    @media (max-width: 1024px) {
+        cursor: pointer;
+    }
 }
 
 .contact-icons img {

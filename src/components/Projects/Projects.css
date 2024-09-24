@@ -37,7 +37,6 @@
   }
 }
 
-
 .cases{
   font-weight: 500;
   position: relative;
@@ -124,6 +123,10 @@
 
 .link {
   cursor: none;
+
+  @media (max-width: 1024px) {
+    cursor: pointer;
+  }
 }
 
 @media (max-width: 900px) {
@@ -201,6 +204,15 @@
   cursor: none;
   display: none;
   text-decoration: none;
+
+  &:hover {
+    background-color: #c5c1c1;
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 1024px) {
+    cursor: pointer;
+  }
 }
 
 .github {
@@ -216,16 +228,20 @@
     transition: background-color 0.3s ease, transform 0.3s ease;
     cursor: none;
     text-decoration: none;
+
+    &:hover {
+      background-color: #c5c1c1;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 1024px) {
+      cursor: pointer;
+    }
 }
 
 .github img {
     width: 25px;
     margin-right: 15px;
-}
-
-.github:hover {
-    background-color: #c5c1c1;
-    transform: scale(1.05);
 }
 
 @media (max-width: 1024px) {
@@ -234,7 +250,6 @@
   }
 }
 
-/* Animation */
 @supports (animation-timeline: works) {
 
   @scroll-timeline cards-element-scrolls-in-body {
@@ -280,10 +295,6 @@
 @media (max-width: 1420px) {
   .works {
       font-size: 15rem;
-  }
-
-  .card-content > figure > img {
-
   }
 }
 
