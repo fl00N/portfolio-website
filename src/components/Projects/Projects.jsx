@@ -60,7 +60,7 @@ const Projects = ({ onHoverChange, onHover }) => {
           <div className="card-content">
             <div>
               <h2>Food Delivery</h2>
-              <p className='desc'>This project is a food delivery app developed using React. It is primarily designed to practice and gain experience in web application development.</p>
+              <p className='desc'>This project is a food delivery app developed using MERN. It is primarily designed to practice and gain experience in web application development.</p>
               <div className='buttons'>
                 <a 
                   href='https://learn-react-food-delivery-project.vercel.app/' 
@@ -102,7 +102,7 @@ const Projects = ({ onHoverChange, onHover }) => {
           <div className="card-content">
             <div>
               <h2>Spotify Clone</h2>
-              <p className='desc'>This project is a Spotify clone developed using React. It is primarily designed to practice and gain experience in web application development.</p>
+              <p className='desc'>This project is a Spotify clone developed using MERN. It is primarily designed to practice and gain experience in web application development.</p>
               <div className='buttons'>
                 <a 
                   href='https://learn-react-spotify-clone-project.vercel.app/' 
@@ -144,7 +144,7 @@ const Projects = ({ onHoverChange, onHover }) => {
           <div className="card-content">
             <div>
               <h2>Chat App</h2>
-              <p className='desc'>This project is a chat application developed using React. It is primarily designed to practice and gain experience in web application development.</p>
+              <p className='desc'>This project is a chat application developed using React Vite with Firebase. It is primarily designed to practice and gain experience in web application development.</p>
               <div className='buttons'>
                 <a 
                   href='https://learn-react-chat-app.vercel.app/' 
@@ -188,7 +188,7 @@ const Projects = ({ onHoverChange, onHover }) => {
           <div className="card-content">
             <div>
               <h2>AI Chat</h2>
-              <p className='desc'>This project is an AI chat application developed using React. It is primarily designed to practice and gain experience in web application development.</p>
+              <p className='desc'>This project is an AI chat application developed using MERN. It is primarily designed to practice and gain experience in web application development.</p>
               <div className='buttons'>
                 <a 
                   href='https://learn-react-ai-chat.vercel.app/' 
