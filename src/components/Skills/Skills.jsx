@@ -1,124 +1,122 @@
-import { useEffect, useRef, useState } from 'react';
+import Card from './Card/Card';
 import './Skills.css';
-import { assets } from '../../assets/assets';
+import ReactLenis from '@studio-freight/react-lenis'
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+import { useEffect, useRef } from 'react';
 
-const skillsData = [
-    {
-        category: "Frontend Technologies",
-        skills: ["HTML", "CSS", "JavaScript", "ReactJS", "Tailwind CSS"]
-    },
-    {
-        category: "Backend Integration",
-        skills: ["REST API", "JSON handling", "Axios", "Fetch API"]
-    },
-    {
-        category: "Additional Skills",
-        skills: ["Node.js, Express.js, MongoDB and Firebase", "Responsive Design", "Git"]
-    }
-];
+gsap.registerPlugin(ScrollTrigger)
 
 const Skills = () => {
-    const [hoveredIndex, setHoveredIndex] = useState(null);
-    const [isVisible, setIsVisible] = useState({
-        scrollText: false,
-        skillColumns: false,
-    });
-    const [isSmallScreen, setIsSmallScreen] = useState(false);
+    const containerRef = useRef(null)
+    const cardRef = useRef([])
 
-    const scrollRef = useRef(null);
-    const skillsColumnsRef = useRef(null);
+    useGSAP(() => {
+        const cards = cardRef.current
+        const totalScrollHeight = window.innerHeight * 3
+        const positions = [14, 38, 62, 86]
+        const rotations = [-15, -7.5, 7.5, 15]
 
-    useEffect(() => {
-        const checkScreenSize = () => {
-            setIsSmallScreen(window.innerWidth < 768);
-        };
+        ScrollTrigger.create({
+            trigger: containerRef.current.querySelector('.cards'),
+            start: 'top top',
+            end: () => `+=${totalScrollHeight}`,
+            pin: true,
+            pinSpacing: true
+        })
 
-        window.addEventListener('resize', checkScreenSize);
-        checkScreenSize();
+        cards.forEach((card, index) => {
+            gsap.to(card, {
+                left: `${positions[index]}%`,
+                rotation: `${rotations[index]}`,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: containerRef.current.querySelector('.cards'),
+                    start: 'top top',
+                    end: () => `+=${window.innerHeight}`,
+                    scrub: 0.5, 
+                    id: `spread-${index}`
+                }
+            })
+        })
 
-        return () => window.removeEventListener('resize', checkScreenSize);
-    }, []);
+        cards.forEach((card, index) => {
+            const frontEl = card.querySelector('.flip-card-front')
+            const backEl = card.querySelector('.flip-card-back')
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        if (entry.target === scrollRef.current) {
-                            setIsVisible((prevState) => ({
-                                ...prevState,
-                                scrollText: true,
-                            }));
-                        } else if (entry.target === skillsColumnsRef.current) {
-                            setIsVisible((prevState) => ({
-                                ...prevState,
-                                skillColumns: true,
-                            }));
-                        }
-                        observer.unobserve(entry.target);
+            const staggerOffset = index * 0.05
+            const startOffset = 1 / 3 + staggerOffset
+            const endOffset = 2 / 3 + staggerOffset
+
+            ScrollTrigger.create({
+                trigger: containerRef.current.querySelector('.cards'),
+                start: 'top top',
+                end: () => `+=${totalScrollHeight}`,
+                scrub: 1,
+                id: `rotate-flip-${index}`,
+                onUpdate: (self) => {
+                    const progress = self.progress
+                    if (progress >= startOffset && progress <= endOffset) {
+                        const animationProgress = (progress - startOffset) / (1 / 3)
+                        const frontRotation = -180 * animationProgress
+                        const backRotation = -180 - 180 * animationProgress
+                        const cardRotation = rotations[index] * (1 - animationProgress)
+
+                        gsap.to(frontEl, { rotateY: frontRotation, ease: 'power1.out'})
+                        gsap.to(backEl, { rotateY: backRotation, ease: 'power1.out'})
+                        gsap.to(card, {
+                            xPercent: -50,
+                            yPercent: -50,
+                            rotate: cardRotation,
+                            ease: 'power1.out'
+                        })
                     }
-                });
-            },
-            {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.3,
-            }
-        );
+                }
+            })
+        })
 
-        if (scrollRef.current) observer.observe(scrollRef.current);
-        if (skillsColumnsRef.current) observer.observe(skillsColumnsRef.current);
+    }, { scope: containerRef })
 
+    useEffect(() => {
         return () => {
-            if (scrollRef.current) observer.unobserve(scrollRef.current);
-            if (skillsColumnsRef.current) observer.unobserve(skillsColumnsRef.current);
-        };
-    }, []);
+            ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
+        }
+    }, [])
+
+    const backTitles = [
+        "Frontend Technologies",
+        "Backend Technologies",
+        "Additional skills",
+        "Courses"
+    ];
+
+    const backTexts = [
+        "• HTML • CSS • Tailwind CSS • JavaScript • TypeScript • Three.js • React.js • Next.js • Vite • Zustand • GSAP • Framer Motion",
+        "• Node.js • Express.js • MongoDB • Firebase",
+        "• Responsive Design • OOP • Git • REST API • Vercel • Gemini AI",
+        "• Coursera: Meta Front End Developer By Meta • Udemy: JavaSript By Ivan Petrichenko • Udemy:  JavaSript + React.js By Ivan Petrichenko • Udemy: MERN Full Stack By Maximilian Schwarzmüller • Udemy: MERN 2024 Edition By John Smilga"
+    ];
+
 
     return (
-        <div className="skills">
-            <div id='skills' className="scroll" ref={scrollRef}>
-                <ul>
-                    <li>
-                        <span className={`text ${isVisible.scrollText ? 'visible' : ''}`}>
-                            My Skills
-                        </span>
-                    </li>
-                </ul>
-                <ul aria-hidden="true">
-                    <li>
-                        <span className={`text ${isVisible.scrollText ? 'visible' : ''}`}>
-                            My Skills
-                        </span>
-                    </li>
-                </ul>
-            </div>
-            <div className="container">
-                <div className={`skills-columns ${isVisible.skillColumns ? 'visible' : ''}`} ref={skillsColumnsRef}>
-                    {skillsData.map((category, index) => (
-                        <div
-                            className={`skills-column ${isVisible.skillColumns ? 'visible' : ''}`}
+        <ReactLenis root>
+            <div className="container" ref={containerRef}>
+                <div className='cards'>
+                    {[...Array(4)].map((_, index) => (
+                        <Card
                             key={index}
-                            onMouseEnter={() => !isSmallScreen && setHoveredIndex(index)}
-                            onMouseLeave={() => setHoveredIndex(null)}
-                        >
-                            <h2>{category.category}</h2>
-                            <ul>
-                                {category.skills.map((skill, idx) => (
-                                    <li key={idx}>
-                                        <img
-                                            src={hoveredIndex === index && !isSmallScreen ? assets.black_tick_icon : assets.tick_icon}
-                                            alt="Tick icon"
-                                        />
-                                        {skill}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                            id={`card-${index + 1}`}
+                            frontSrc="/card.png"
+                            frontAlt="Card Image"
+                            backTitle={backTitles[index]}
+                            backText={backTexts[index]}
+                            ref={(el) => (cardRef.current[index] = el)}
+                        />
                     ))}
                 </div>
             </div>
-        </div>
+        </ReactLenis>
     );
 };
 

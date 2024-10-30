@@ -1,0 +1,32 @@
+.paralax-text {
+    overflow: hidden;
+    background: #0f0f0f;
+}
+
+.slide {
+    position: relative;
+    display: flex;
+    white-space: nowrap;
+}
+
+.phrase {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+
+    p {
+        font-size: 7.5vw;
+        color: rgb(130, 130, 130);
+        font-style: italic;
+    }
+
+    span {
+        position: relative;
+        height: 7.5vw;
+        aspect-ratio: 4/2;
+        overflow: hidden;
+        border-radius: 9999px;
+    }
+}

@@ -1,0 +1,19 @@
+.paragraph{
+    display: flex;
+    max-width: 1280px;
+    flex-wrap: wrap;
+    font-size: 4.5rem;
+    font-weight: 600;
+    color: white;
+
+    .word{
+      position: relative;
+      margin-right: 12px;
+      margin-top: 12px;
+
+      .shadow{
+        position: absolute;
+        opacity: 20%;
+      }
+    }
+  }

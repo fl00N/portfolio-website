@@ -1,0 +1,8 @@
+.svgContainer {
+    position: absolute;
+}
+
+svg {
+    width: 100%;
+}
+

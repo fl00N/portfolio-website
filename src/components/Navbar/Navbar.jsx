@@ -1,33 +1,46 @@
-import { useState } from 'react';
 import './Navbar.css';
+import { useState } from 'react';
+import Button from './Button';
+import { AnimatePresence, motion } from 'framer-motion';
+import Links from './Links';
 
-const Navbar = ({ onHoverChange, navbarColorClass }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const menu = {
+    open: {
+        width: "480px",
+        height: "340px",
+        top: "-25px",
+        right: "-25px",
+        transition: { duration: 0.75, ease: [0.76, 0, 0.24, 1]}
+    },
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+    closed: {
+        width: "100px",
+        height: "40px",
+        top: "0px",
+        right: "0px",
+        transition: { duration: 0.75, delay: 0.35, ease: [0.76, 0, 0.24, 1]}
+    }
+}
+
+const Navbar = () => {
+  const [isActive, setIsActive] = useState(false);
 
   return (
-    <div className={`navbar ${navbarColorClass}`}>
-      <h1 className={`logo ${navbarColorClass}`}>AB</h1>
-      <div className='menuDiv'>
-        <ul className={isOpen ? 'show' : 'hide'}>
-          <a href="#about" onClick={() => setIsOpen(false)}>About me</a>  
-          <a href="#skills" onClick={() => setIsOpen(false)}>Skills</a> 
-          <a href="#projects" onClick={() => setIsOpen(false)}>Projects</a> 
-          <a href="#contacts" onClick={() => setIsOpen(false)}>Contacts</a> 
-        </ul>
-        <div 
-          className={`hamburger-menu ${isOpen ? 'open' : ''} ${navbarColorClass}`} 
-          onClick={toggleMenu}
-          onMouseEnter={() => onHoverChange(true)}
-          onMouseLeave={() => onHoverChange(false)}
+    <div className='navbar'>
+      <h1>AB</h1>
+      
+      <div className='header'>
+        <Button isActive={isActive} toggleMenu={() => {setIsActive(!isActive)}}/>
+        <motion.div 
+          className='menu'
+          variants={menu}
+          animate={isActive ? "open" : "closed"}
+          initial="closed"
         >
-          <div className="bar bar1"></div>
-          <div className="bar bar2"></div>
-          <div className="bar bar3"></div>
-        </div>
+          <AnimatePresence>
+            {isActive && <Links toggleMenu={() => {setIsActive(!isActive)}} />}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </div>
   );

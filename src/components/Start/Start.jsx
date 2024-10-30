@@ -1,33 +1,35 @@
-import { useEffect, useState } from 'react';
+import Shapes from '../3D/Shapes';
 import './Start.css';
 
-const Start = ({ showScrollMe }) => {
-  const [fadeClass, setFadeClass] = useState('');
-
-  useEffect(() => {
-    if (!showScrollMe) {
-      setFadeClass('fade-out');
-    }
-  }, [showScrollMe]);
-
+const Start = () => {
   return (
-    <div className='startDiv'>
-      <div className='greetingDiv'>
-        <p>Hello there!</p>
-        <h1>
-          I'm Andrii Bondar,
-          <br />
-          a Front developer
-        </h1>
-      </div>
+      <div>
+        <div className='startDiv'>
+          <Shapes />
 
-        {showScrollMe && (
-          <div className={`scrollDiv ${fadeClass}`}>
-            <p className="scrollMe">Scroll to read about me</p>
-            <div className="scrollIndicator"></div>
+          <div className='greetingDiv'>
+            <p>Hello there!</p>
+            <h1>
+              I'm Andrii Bondar,
+              <span>a Frontend developer</span>
+            </h1>
           </div>
-        )}
-    </div>
+        </div>
+
+        <div className="textUnderStart">
+            <p>
+              I am <span>an 18-year-old</span>
+              <br />
+              aspiring Front-End
+              <br /> 
+              Developer with a 
+              <br />
+              strong passion for 
+              <br />
+              web development.
+            </p>
+          </div>
+      </div>
   );
 };
 
