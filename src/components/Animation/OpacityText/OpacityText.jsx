@@ -25,8 +25,8 @@ export default function OpacityText({ paragraph }) {
           <Word 
             key={i} 
             progress={scrollYProgress} 
-            range={[start, end]} 
-            isHighlight={word === "18-year-old"}
+            range={[start, end]}
+            isHighlight={word === "motivated"}
           >
             {word}
           </Word>

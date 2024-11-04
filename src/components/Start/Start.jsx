@@ -32,7 +32,7 @@ const FirstPage = () => {
 
 const SecondPage = () => {
 
-  const paragraph = "I'm motivated 18-year-old developer with a passion and a commitment to continuous learning. I have built a strong foundation through self-study and hands-on projects."
+  const paragraph = "I'm a motivated developer with a passion and a commitment to continuous learning. I have built a strong foundation through self-study and hands-on projects."
 
   return (
     <>
