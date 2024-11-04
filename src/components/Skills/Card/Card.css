@@ -8,13 +8,17 @@
     perspective: 1000px;
 }
 
+.card h1 {
+    font-size: 34px;
+}
+
 .card p {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    font-size: 20px;
+    font-size: 28px;
     width: 200px;
 }
 

@@ -1,24 +1,20 @@
-.footer {
-    padding: 2rem 0;
+.contacts {
     text-align: center;
     color: white;
-    height: 80vh;
-    margin-top: 100px;
+    height: 100vh;
+    background: #000;
 }
 
-.footer-content {
-    margin: 0 auto;
-}
-
-.footerScroll {
+.contactsScroll {
     overflow: hidden;
     display: flex;
     text-transform: uppercase;
     z-index: 0;
-    user-select: none;
+    position: absolute;
+    top: -130px;
 }
 
-.footerScroll ul {
+.contactsScroll ul {
     list-style: none;
     min-width: 100%;
     display: flex;
@@ -27,7 +23,13 @@
     animation: scroll 15s linear infinite;
 }
 
-.footerScrollText {
+@keyframes scroll {
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.contaxtsScrollText {
     background-clip: text;
     color: white;
     font-weight: 400;
@@ -35,16 +37,9 @@
     font-family: 'Adoretta Holland Serif', sans-serif;
 }
 
-.contact-icons {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-}
-
-.contact-icons a, .contact-icons button {
-    background-color: transparent;
+.item a, .item button {
+    background-color: white;
     color: black;
-    border: 2px solid black;
     border-radius: 50px;
     padding: 15px 30px;
     display: flex;
@@ -57,110 +52,87 @@
     text-decoration: none;
     width: 200px;
     height: 60px;
-    cursor: none;
-
-    @media (max-width: 1024px) {
-        cursor: pointer;
-    }
 }
 
-.contact-icons img {
+.item img {
     width: 25px;
+    height: 25px;
     margin-right: 15px;
 }
 
-.contact-icons a:hover, .contact-icons button:hover {
-    background-color: #c5c1c1;
+.item a:hover, .item button:hover {
+    background-color: #c1c1c1;
     transform: scale(1.05);
 }
 
-@media (max-width: 1520px) {
-    .footerScrollText {
-        font-size: 12rem;
-    }
-}
+.contact {
+  height: 100vh;
+  max-width: 1366px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 50px;
 
-@media (max-width: 1220px) {
-    .footerScrollText {
-        font-size: 10rem;
-    }
-}
+  .textContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 
-@media (max-width: 1100px) {
-    .footer {
-        height: 70vh;
-    }
-}
+    h1 {
+      font-size: 100px;
+      line-height: 88px;
+      color: white;
 
-@media (max-width: 990px) {
-    .footerScrollText {
-        font-size: 8rem;
-    }
-}
-
-@media (max-width: 800px) {
-    .footerScrollText {
-        font-size: 7rem;
     }
 
-    .footer {
-        height: 50vh;
+    h2 {
+        color: white;
     }
-}
+  }
 
-@media (max-width: 700px) {
-    .footerScrollText {
-        font-size: 6rem;
-    }
-}
+  .formContainer {
+    flex: 1;
+    position: relative;
 
-@media (max-width: 610px) {
-    .footerScrollText {
-        font-size: 4rem;
-    }
-}
-
-@media (max-width: 550px) {
-    .footer {
-        margin-top: 200px;
-        height: 35vh;
-    }
-}
-
-@media (max-width: 470px) {
-    .contact-icons a, .contact-icons button {
-        padding: 10px 20px;
-        width: 150px;
+    .phoneSvg {
+      stroke: white;
+      position: absolute;
+      margin: auto;
+      z-index: 0;
     }
 
-    .footer {
-        margin-top: 100px;
-    }
-}
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      
+      input,
+      textarea {
+        z-index: 9;
+        padding: 20px;
+        background-color: transparent;
+        border: 1px solid white;
+        color: white;
+        border-radius: 5px;
+        resize: none;
 
-@media (max-width: 400px) {
-    .footerScrollText {
-        font-size: 3rem;
-    }
+      }
 
-    .footer {
-        margin-top: 50px;
+      button {
+        z-index: 10;
+        padding: 20px;
+        font-size: 20px;
+        border: none;
+        background-color: rgb(255, 255, 255);
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        
+        &:hover {
+            background-color: #c1c1c1;
+        }
+      }
     }
-}
-
-@media (max-width: 340px) {
-    .contact-icons a, .contact-icons button {
-        padding: 7px 17px;
-        width: 130px;
-        height: 55px;
-        font-size: 13px;
-    }
-
-    .contact-icons img {
-        width: 20px;
-    }
-
-    .footer {
-        margin-top: 0px;
-    }
+  }
 }

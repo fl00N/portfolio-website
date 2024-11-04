@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Canvas } from '@react-three/fiber'
-import Model from './ModelShapes';
+import Model from './FooterModelShapes';
 import { Environment } from '@react-three/drei'
 import { useMotionValue, useSpring } from "framer-motion"
 
@@ -39,8 +39,9 @@ export default function Shapes() {
         zIndex: 0,
         pointerEvents: 'none',
         background: "transparent", 
-        height: '100vh', 
-        width: '100vw'
+        height: '50vh', 
+        width: '100vw',
+        filter: 'blur(3px)'
       }} 
       orthographic 
       camera={{position: [0, 0, 200], zoom: 10}}

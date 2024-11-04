@@ -1,16 +1,25 @@
+.mainStartDiv {
+    position: relative;
+    height: 200vh;
+}
+
+.startDiv {
+    position: sticky;
+    top: 0;
+    z-index: -1;
+    background: #000;
+
+}
+
 .greetingDiv {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 0 auto;
     width: 100vw;
     height: 100vh;
-    gap: 1rem;
-    z-index: 100;
     mix-blend-mode: difference;
-    background: #0e090d;
-
+    
 }
 
 .greetingDiv p {
@@ -18,7 +27,7 @@
     text-transform: uppercase;
     font-weight: 600;
     letter-spacing: 2px;
-    font-size: 0.8rem;
+    font-size: 1.1rem;
     animation: slideInTop 1s ease-out forwards;
     margin: 0 auto;
 
@@ -26,7 +35,7 @@
 
 .greetingDiv h1 {
     color: white;
-    font-size: 5rem;
+    font-size: 6rem;
     animation: slideInBottom 3s ease-out forwards;
     display: flex;
     justify-content: center;
@@ -92,15 +101,34 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgb(32, 32, 32);
+    background: #0e090d;
 }
-  
-  .textUnderStart p {
-    font-size: 4.5rem;
-    font-weight: 600;
-    color: white;
-  }
 
-  .textUnderStart span {
-    color: #c9fd74;
-  }
+.magneticBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    background-color: white;
+    text-decoration: none;
+    color: black;
+    position: absolute;
+    bottom: 0px;
+    right: 460px;
+    font-size: 20px;
+
+    p {
+        color: black;
+        font-size: 28px;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    &:hover {
+        background-color: rgb(173, 170, 170);
+        transition: 0.3s ease;
+    }
+}

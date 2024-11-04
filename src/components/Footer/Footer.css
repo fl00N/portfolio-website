@@ -1,0 +1,63 @@
+.footer {
+    width: 100vw;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: rgb(255, 255, 255);
+}
+
+.footerContent {
+    width: 100%;
+    position: fixed;
+    bottom: -30px;
+}
+
+.svgWrapper {
+    position: relative;
+}
+
+.svg {
+    width: 20rem;
+    height: 20rem;
+}
+
+@media (min-width: 768px) {
+    .relativeSvg {
+        width: 500px;
+        height: 500px;
+    }
+}
+
+.textPath {
+    font-size: 1.25rem;
+}
+
+.hireMe {
+    font-size: 20px;
+    width: 4rem;
+    height: 4rem;
+    background: black;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+@media (min-width: 768px) {
+    .hireMe {
+        width: 7rem;
+        height: 7rem;
+    }
+}
