@@ -2,31 +2,21 @@ import { useEffect, useRef, useState } from "react";
 import "./Contacts.css";
 import { motion, useInView } from "framer-motion";
 import emailjs from "@emailjs/browser";
-import { assets } from '../../assets/assets'
+import { assets } from '../../assets/assets';
 import transition from "../Animation/transition";
 import Navbar from "../Navbar/Navbar";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const variants = {
-  initial: {
-    y: 500,
-    opacity: 0,
-  },
-  animate: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      staggerChildren: 0.1,
-    },
-  },
+  initial: { y: 500, opacity: 0 },
+  animate: { y: 0, opacity: 1, transition: { duration: 0.5, staggerChildren: 0.1 } },
 };
 
 const Contacts = () => {
   const ref = useRef();
   const formRef = useRef();
-  const [error, setError] = useState(false);
-  const [success, setSuccess] = useState(false);
-
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const isInView = useInView(ref, { margin: "-100px" });
 
   const sendEmail = (e) => {
@@ -34,19 +24,25 @@ const Contacts = () => {
 
     emailjs
       .sendForm(
-        "service_94y20xo",
-        "template_v10u2oh",
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         formRef.current,
-        "pX_2hasGmGcuvjXIW"
+        import.meta.env.VITE_EMAILJS_USER_ID
       )
       .then(
         (result) => {
-          setSuccess(true)
+          toast.success("Message sent successfully!");
+          setFormData({ name: "", email: "", message: "" });
         },
         (error) => {
-          setError(true);
+          toast.error("Failed to send message. Please try again.");
         }
       );
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   useEffect(() => {
@@ -55,46 +51,47 @@ const Contacts = () => {
 
   return (
     <div style={{ width: '100vw', backgroundColor: '#000'}}>
-        <Navbar />
-          <motion.div
-          ref={ref}
-          className="contact"
-          variants={variants}
-          initial="initial"
-          whileInView="animate"
-        >
+      <Navbar />
+      <ToastContainer />
+      <motion.div
+        ref={ref}
+        className="contact"
+        variants={variants}
+        initial="initial"
+        whileInView="animate"
+      >
         <motion.div className="textContainer" variants={variants}>
-            <motion.h1 variants={variants}>Let’s work together</motion.h1>
-            <motion.div className="item" variants={variants}>
-                <a
-                    href="https://www.linkedin.com/in/andrii-bondar-178105255/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                >
-                    <img src={assets.linkedin_icon} alt="LinkedIn" />
-                    LinkedIn
-                </a>
-            </motion.div>
-            <motion.div className="item" variants={variants}>
-                <a 
-                    href="https://github.com/fl00N" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                >
-                    <img src={assets.github_icon} alt="GitHub" />
-                    GitHub
-                </a>
-            </motion.div>
+          <motion.h1 variants={variants}>Let’s work together</motion.h1>
+          <motion.div className="item" variants={variants}>
+            <a
+              href="https://www.linkedin.com/in/andrii-bondar-178105255/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={assets.linkedin_icon} alt="LinkedIn" />
+              LinkedIn
+            </a>
+          </motion.div>
+          <motion.div className="item" variants={variants}>
+            <a
+              href="https://github.com/fl00N"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={assets.github_icon} alt="GitHub" />
+              GitHub
+            </a>
+          </motion.div>
         </motion.div>
         <div className="formContainer">
-            <motion.div
-              className="phoneSvg"
-              initial={{ opacity: 1 }}
-              whileInView={{ opacity: 0 }}
-              transition={{ delay: 3, duration: 1 }}
-            >
+          <motion.div
+            className="phoneSvg"
+            initial={{ opacity: 1 }}
+            whileInView={{ opacity: 0 }}
+            transition={{ delay: 3, duration: 1 }}
+          >
             <svg width="450px" height="450px" viewBox="0 0 32.666 32.666">
-                <motion.path
+              <motion.path
                   strokeWidth={0.2}
                   fill="none"
                   initial={{ pathLength: 0 }}
@@ -113,25 +110,43 @@ const Contacts = () => {
                   c1.041,1.228,2.127,2.416,3.245,3.576l-0.006,0.004c0.031,0.031,0.063,0.06,0.095,0.09c0.03,0.031,0.059,0.062,0.088,0.095
                   l0.006-0.006c1.16,1.118,2.535,2.765,4.769,4.255c4.703,3.141,8.312,2.264,10.438,1.098c3.67-2.021,5.312-6.338,5.312-9.719
                   C32.666,7.326,25.339,0,16.333,0z"
-                />
+              />            
             </svg>
-            </motion.div>
-            <motion.form
-              ref={formRef}
-              onSubmit={sendEmail}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 4, duration: 1 }}
-            >
-            <input type="text" required placeholder="Name" name="name"/>
-            <input type="email" required placeholder="Email" name="email"/>
-            <textarea rows={8} placeholder="Message" name="message"/>
-            <button>Submit</button>
-            {error && "Error"}
-            {success && "Success"}
-            </motion.form>
+          </motion.div>
+          <motion.form
+            ref={formRef}
+            onSubmit={sendEmail}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 4, duration: 1 }}
+          >
+            <input
+              type="text"
+              required
+              placeholder="Name"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+            />
+            <input
+              type="email"
+              required
+              placeholder="Email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+            />
+            <textarea
+              rows={8}
+              placeholder="Message"
+              name="message"
+              value={formData.message}
+              onChange={handleInputChange}
+            />
+            <button type="submit">Submit</button>
+          </motion.form>
         </div>
-        </motion.div>
+      </motion.div>
     </div>
   );
 };
