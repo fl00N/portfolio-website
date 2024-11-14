@@ -25,7 +25,7 @@
         overflow: visible;
     }
 
-    @media (max-width: 375px) {
+    @media (max-width: 426px) {
         height: 30vh;
         width: 90vw;
     }
