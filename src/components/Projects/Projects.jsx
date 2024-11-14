@@ -22,12 +22,14 @@ const totalImages = sliderContent.length;
 
 const Projects = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(1);
+    const [currentMobileImageIndex, setCurrentMobileImageIndex] = useState(0);
     const [currentContentIndex, setCurrentContentIndex] = useState(0);
     const [isAnimating, setIsAnimating] = useState(false);
     const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
     const [showCursor, setShowCursor] = useState(false);
     const sliderRef = useRef(null);
     const contentRef = useRef(null);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
     const splitTextIntoSpans = (selector) => {
         const els = document.querySelectorAll(selector);
@@ -180,17 +182,128 @@ const Projects = () => {
         });
     }, [currentImageIndex, currentContentIndex, isAnimating]);
 
+    const mobileHandleAnimation = (direction = 'next') => {
+        if (isAnimating) return;
+        setIsAnimating(true);
+
+        // Content animation
+        splitTextIntoSpans('.slider-content-active h1');
+        gsap.to('.slider-content-active h1 span', {
+            top: '-175px',
+            stagger: 0.05,
+            ease: 'power3.out',
+            duration: 0.5,
+            onComplete: () => {
+                gsap.to('.slider-content-active', {
+                    top: '-175px',
+                    duration: 0.25,
+                    ease: 'power3.out',
+                    onComplete: () => {
+                        const activeContent = document.querySelector('.slider-content-active');
+                        if (activeContent) {
+                            activeContent.remove();
+                        }
+                    }
+                });
+            }
+        });
+
+        // Content preparation
+        const nextContentIndex = direction === 'next' 
+            ? (currentContentIndex + 1) % totalImages
+            : (currentContentIndex - 1 + totalImages) % totalImages;
+        const nextContentText = sliderContent[nextContentIndex];
+        const newContentHTML = `<div class='slider-content-next' style='top: 200px'><h1>${nextContentText}</h1></div>`;
+        contentRef.current.insertAdjacentHTML('beforeend', newContentHTML);
+
+        splitTextIntoSpans('.slider-content-next h1');
+        gsap.set('.slider-content-next h1 span', { top: '200px' });
+
+        // Simple image transition
+        const nextIndex = direction === 'next'
+            ? (currentMobileImageIndex + 1) % totalImages
+            : (currentMobileImageIndex - 1 + totalImages) % totalImages;
+
+        const currentSlide = document.querySelector('.mobile-slide-active');
+        currentSlide.classList.add('fade-out');
+
+        const newSlideHTML = `
+            <div class='mobile-slide-active' style="opacity: 0">
+                <img src='/img${nextIndex + 1}.png' alt='' />
+            </div>`;
+        document.querySelector('.mobile-slider').insertAdjacentHTML('beforeend', newSlideHTML);
+
+        // Fade in new slide
+        setTimeout(() => {
+            const newSlide = document.querySelector('.mobile-slide-active:last-child');
+            newSlide.style.opacity = '1';
+            
+            // Remove old slide after transition
+            setTimeout(() => {
+                currentSlide.remove();
+                setCurrentMobileImageIndex(nextIndex);
+                setIsAnimating(false);
+            }, 1000);
+        }, 1000);
+
+        // Content animation completion
+        gsap.to('.slider-content-next', {
+            top: '50%',
+            duration: 1.125,
+            ease: 'power3.out',
+            onComplete: () => {
+                gsap.to('.slider-content-next h1 span', {
+                    top: 0,
+                    stagger: 0.05,
+                    ease: 'power3.out',
+                    duration: 0.5,
+                    onComplete: () => {
+                        const nextContent = document.querySelector('.slider-content-next');
+                        nextContent.classList.remove('slider-content-next');
+                        nextContent.classList.add('slider-content-active');
+                        nextContent.style.top = '50%';
+
+                        const liveDemoLink = projectLinks[nextContentIndex].liveDemo;
+                        const githubLink = projectLinks[nextContentIndex].github;
+                        document.querySelector('.live-demo-link').href = liveDemoLink;
+                        document.querySelector('.github-link').href = githubLink;
+
+                        setCurrentContentIndex(nextContentIndex);
+                    }
+                });
+            }
+        });
+    };
+
     useEffect(() => {
         const initialContentHTML = `<div class='slider-content-active'><h1>${sliderContent[currentContentIndex]}</h1></div>`;
         contentRef.current.insertAdjacentHTML('beforeend', initialContentHTML);
         splitTextIntoSpans('.slider-content-active h1');
 
-        gsap.to('.slide-next-img', {
-            clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-            duration: 1.5,
-            ease: 'power3.out',
-            delay: 3
-        });
+        if (isMobile) {
+            gsap.to('.mobile-slide-next .slide-next-img', {
+                clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+                duration: 1.5,
+                ease: 'power3.out',
+                delay: 3
+            });
+        } else {
+            gsap.to('.slide-next-img', {
+                clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+                duration: 1.5,
+                ease: 'power3.out',
+                delay: 3
+            });
+        }
+    }, []);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
 
     return (
@@ -200,26 +313,42 @@ const Projects = () => {
                 <div
                     className="slider"
                     ref={sliderRef}
-                    onClick={handleAnimation}
-                    onMouseMove={handleMouseMove}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
+                    onClick={!isMobile ? handleAnimation : undefined}
+                    onMouseMove={!isMobile ? handleMouseMove : undefined}
+                    onMouseEnter={!isMobile ? handleMouseEnter : undefined}
+                    onMouseLeave={!isMobile ? handleMouseLeave : undefined}
                 >
-                    <div className="slide-active">
-                        <img src='/img1.png' alt="Active Slide" />
-                    </div>
-                    <div className="slide-next">
-                        <div className="slide-next-img">
-                            <img src='/img2.png' alt="Next Slide" />
-                        </div>
-                    </div>
+                    {isMobile ? (
+                        <>
+                            <div className="mobile-slider">
+                                <div className="mobile-slide-active">
+                                    <img src="/img1.png" alt="Active Slide" />
+                                </div>
+                            </div>
+                            <div className="mobile-controls">
+                                <button className="mobile-button" onClick={() => mobileHandleAnimation('prev')}>Previous</button>
+                                <button className="mobile-button" onClick={() => mobileHandleAnimation('next')}>Next</button>
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            <div className="slide-active">
+                                <img src='/img1.png' alt="Active Slide" />
+                            </div>
+                            <div className="slide-next">
+                                <div className="slide-next-img">
+                                    <img src='/img2.png' alt="Next Slide" />
+                                </div>
+                            </div>
+                        </>
+                    )}
                 </div>
                 <div className="slider-content" ref={contentRef}>
-                    <a href="https://learn-react-food-delivery-project.vercel.app" target='blank' className="live-demo-link">Live Demo</a>
-                    <a href="https://github.com/fl00N/learn-react-food-delivery-project" target='blank' className="github-link">GitHub</a>
+                    <a href={projectLinks[currentContentIndex].liveDemo} target='blank' className="live-demo-link">Live Demo</a>
+                    <a href={projectLinks[currentContentIndex].github} target='blank' className="github-link">GitHub</a>
                 </div>
 
-                {showCursor && (
+                {showCursor && !isMobile && (
                     <div className={`custom-cursor ${showCursor ? 'fade-in' : 'fade-out'}`} style={{ left: cursorPosition.x, top: cursorPosition.y }}>
                         Click Me
                     </div>

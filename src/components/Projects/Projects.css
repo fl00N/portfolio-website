@@ -13,6 +13,22 @@
     height: 70vh;
     overflow: hidden;
     cursor: none;
+
+    @media (max-width: 1024px) {
+        height: 60vh;
+        width: 80vw;
+    }
+
+    @media (max-width: 768px) {
+        height: 50vh;
+        width: 90vw;
+        overflow: visible;
+    }
+
+    @media (max-width: 375px) {
+        height: 30vh;
+        width: 90vw;
+    }
 }
 
 .custom-cursor {
@@ -76,10 +92,25 @@
     width: 100px;
     height: 150px;
     clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+
+    @media (max-width: 1024px) {
+        width: 80px;
+        height: 120px;
+    }
+
+    @media (max-width: 426px) {
+        width: 60px;
+        height: 90px;
+    }
+
+    @media (max-width: 376px) {
+        width: 50px;
+        height: 75px;
+    }
 }
 
 .slider-content {
-    position: absolute;
+    position: absolute; 
     bottom: 0;
     width: 100%;
     height: 110px;
@@ -90,6 +121,10 @@
     align-items: center;
     padding: 50px;
 
+    @media (max-width: 590px) {
+        padding: 20px;
+    }
+
     a {
         color:  #b3b3b3e6;
         font-size: 18px;
@@ -99,6 +134,11 @@
         position: relative;
         text-decoration: none;
         text-transform: uppercase;
+
+        @media (max-width: 376px) {
+            font-size: 14px;
+        }
+        
     
         &::before {
           content: '';
@@ -126,6 +166,14 @@
         font-size: 105px;
         font-weight: lighter;
         color: white;
+
+        @media (max-width: 500px) {
+            font-size: 80px;
+        }
+
+        @media (max-width: 376px) {
+            font-size: 60px;
+        }
         
         span {
             font-family: "TIMMONSNY-Regular";
@@ -136,10 +184,21 @@
 
 .slider-content-active {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
+    @media (max-width: 768px) {
+        width: 100%;
+        text-align: center;
+    }
+
+    h1 span {
+        position: relative;
+        display: inline-block;
+        transition: top 0.5s ease;
+    }
 }
 
 .slider-content-next {
@@ -148,4 +207,132 @@
     left: 50%;
     transform: translate(-50%, -50%);
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
+    @media (max-width: 768px) {
+        width: 100%;
+        text-align: center;
+    }
+
+    h1 span {
+        position: relative;
+        display: inline-block;
+        transition: top 0.5s ease;
+    }
+}
+
+.mobile-slider {
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+}
+
+.mobile-slide-active {
+  @media (max-width: 768px) {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: opacity 1s ease;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+.mobile-slide-active.fade-out {
+  opacity: 0;
+}
+
+.mobile-slide-next {
+  @media (max-width: 768px) {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    .slide-next-img {
+      width: 100px;
+      height: 150px;
+      clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+      transition: clip-path 1.5s ease-out;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+      @media (max-width: 426px) {
+        width: 60px;
+        height: 90px;
+      }
+      
+      @media (max-width: 376px) {
+        width: 50px;
+        height: 75px;
+      }
+    }
+  }
+}
+
+.mobile-controls {
+  display: none;
+  
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    z-index: 10;
+  }
+
+  @media (max-width: 426px) {
+    width: 260px;
+  }
+
+  @media (max-width: 376px) {
+    width: 240px;
+  }
+}
+
+.mobile-button {
+  @media (max-width: 768px) {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 8px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+    font-weight: 300;
+    
+    &:hover {
+      background: transparent;
+      border-color: rgba(255, 255, 255, 0.8);
+      color: rgba(255, 255, 255, 1);
+    }
+    
+    &:active {
+      transform: scale(0.98);
+    }
+
+    @media (max-width: 376px) {
+      padding: 6px 16px;
+      font-size: 11px;
+    }
+  }
 }

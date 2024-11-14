@@ -37,34 +37,6 @@
     font-family: 'Adoretta Holland Serif', sans-serif;
 }
 
-.item a, .item button {
-    background-color: white;
-    color: black;
-    border-radius: 50px;
-    padding: 15px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    cursor: pointer;
-    text-decoration: none;
-    width: 200px;
-    height: 60px;
-}
-
-.item img {
-    width: 25px;
-    height: 25px;
-    margin-right: 15px;
-}
-
-.item a:hover, .item button:hover {
-    background-color: #c1c1c1;
-    transform: scale(1.05);
-}
-
 .contact {
   height: 100vh;
   max-width: 1366px;
@@ -72,22 +44,93 @@
   display: flex;
   align-items: center;
   gap: 50px;
+  padding: 0 20px;
+
+  @media (max-width: 968px) {
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+    padding: 100px 20px;
+  }
 
   .textContainer {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 15px;
+
+    .linksContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+
+        @media (max-width: 968px) {
+          gap: 15px;
+          flex-direction: row;
+        }
+
+        .item a, .item button {
+          background-color: white;
+          color: black;
+          border-radius: 50px;
+          padding: 15px 30px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 16px;
+          font-weight: bold;
+          transition: background-color 0.3s ease, transform 0.3s ease;
+          cursor: pointer;
+          text-decoration: none;
+          width: 200px;
+          height: 60px;
+
+          @media (max-width: 768px) {
+            width: 140px;
+            height: 45px;
+            padding: 10px 20px;
+            font-size: 14px;
+          }
+
+          img {
+            width: 25px;
+            height: 25px;
+            margin-right: 15px;
+
+            @media (max-width: 768px) {
+              width: 18px;
+              height: 18px;
+              margin-right: 10px;
+            }
+        }
+        
+        a:hover, button:hover {
+            background-color: #c1c1c1;
+            transform: scale(1.05);
+        }
+      }
+    }
+
+    @media (max-width: 968px) {
+      align-items: center;
+      text-align: center;
+      gap: 5px;
+    }
 
     h1 {
       font-size: 100px;
       line-height: 88px;
       color: white;
 
-    }
+      @media (max-width: 1200px) {
+        font-size: 72px;
+        line-height: 70px;
+      }
 
-    h2 {
-        color: white;
+      @media (max-width: 768px) {
+        font-size: 48px;
+        line-height: 46px;
+      }
     }
   }
 
@@ -95,11 +138,24 @@
     flex: 1;
     position: relative;
 
+    @media (max-width: 968px) {
+      width: 100%;
+      max-width: 500px;
+    }
+
     .phoneSvg {
       stroke: white;
       position: absolute;
       margin: auto;
       z-index: 0;
+
+      @media (max-width: 768px) {
+        width: 300px;
+        height: 300px;
+        left: 50%;
+        top: 22%;
+        transform: translate(-50%, -50%);
+      }
     }
 
     form {
@@ -109,6 +165,7 @@
       
       input,
       textarea {
+        width: 100%;
         z-index: 9;
         padding: 20px;
         background-color: transparent;
@@ -116,10 +173,10 @@
         color: white;
         border-radius: 5px;
         resize: none;
-
       }
 
       button {
+        width: 100%;
         z-index: 10;
         padding: 20px;
         font-size: 20px;
@@ -130,9 +187,25 @@
         transition: background-color 0.3s ease, transform 0.3s ease;
         
         &:hover {
-            background-color: #c1c1c1;
+          background-color: #c1c1c1;
         }
       }
     }
+  }
+}
+
+.contactsScroll {
+  @media (max-width: 768px) {
+    top: -80px;
+  }
+}
+
+.contaxtsScrollText {
+  @media (max-width: 1200px) {
+    font-size: 10rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 6rem;
   }
 }

@@ -53,6 +53,7 @@ const Contacts = () => {
     <div style={{ width: '100vw', backgroundColor: '#000'}}>
       <Navbar />
       <ToastContainer />
+
       <motion.div
         ref={ref}
         className="contact"
@@ -61,27 +62,31 @@ const Contacts = () => {
         whileInView="animate"
       >
         <motion.div className="textContainer" variants={variants}>
-          <motion.h1 variants={variants}>Let’s work together</motion.h1>
-          <motion.div className="item" variants={variants}>
-            <a
-              href="https://www.linkedin.com/in/andrii-bondar-178105255/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src={assets.linkedin_icon} alt="LinkedIn" />
-              LinkedIn
-            </a>
-          </motion.div>
-          <motion.div className="item" variants={variants}>
-            <a
-              href="https://github.com/fl00N"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src={assets.github_icon} alt="GitHub" />
-              GitHub
-            </a>
-          </motion.div>
+          <motion.h1 variants={variants}>Let’s work together</motion.h1>\
+          
+          <div className="linksContainer">
+            <motion.div className="item" variants={variants}>
+              <a
+                href="https://www.linkedin.com/in/andrii-bondar-178105255/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={assets.linkedin_icon} alt="LinkedIn" />
+                LinkedIn
+              </a>
+            </motion.div>
+            <motion.div className="item" variants={variants}>
+              <a
+                href="https://github.com/fl00N"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={assets.github_icon} alt="GitHub" />
+                GitHub
+              </a>
+            </motion.div>
+          </div>
+
         </motion.div>
         <div className="formContainer">
           <motion.div
