@@ -171,8 +171,16 @@
             font-size: 80px;
         }
 
+        @media (max-width: 426px) {
+            font-size: 70px;
+        }
+
         @media (max-width: 376px) {
             font-size: 60px;
+        }
+
+        @media (max-width: 320px) {
+            font-size: 45px;
         }
         
         span {
