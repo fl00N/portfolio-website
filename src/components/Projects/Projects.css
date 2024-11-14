@@ -135,10 +135,9 @@
         text-decoration: none;
         text-transform: uppercase;
 
-        @media (max-width: 376px) {
+        @media (max-width: 465px) {
             font-size: 14px;
         }
-        
     
         &::before {
           content: '';
@@ -175,7 +174,7 @@
             font-size: 70px;
         }
 
-        @media (max-width: 376px) {
+        @media (max-width: 406px) {
             font-size: 60px;
         }
 
