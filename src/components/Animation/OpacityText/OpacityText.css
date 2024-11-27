@@ -16,6 +16,14 @@
         margin-right: 6px;
       }
 
+      @media (max-width: 380px) {
+        margin-right: 4px;
+      }
+
+      @media (max-width: 320px) {
+        margin-right: 2px;
+      }
+
       .shadow{
         position: absolute;
         opacity: 20%;

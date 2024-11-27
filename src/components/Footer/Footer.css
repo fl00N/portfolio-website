@@ -25,13 +25,6 @@
     height: 20rem;
 }
 
-@media (min-width: 768px) {
-    .relativeSvg {
-        width: 500px;
-        height: 500px;
-    }
-}
-
 .textPath {
     font-size: 1.25rem;
 }
