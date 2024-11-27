@@ -1,5 +1,6 @@
 .paragraph{
-    width: 1000px;
+    width: 80%;
+    max-width: 1000px;
     display: flex;
     flex-wrap: wrap;
     font-size: 75px;
@@ -11,6 +12,10 @@
       margin-right: 12px;
       margin-top: 12px;
 
+      @media (max-width: 768px) {
+        margin-right: 6px;
+      }
+
       .shadow{
         position: absolute;
         opacity: 20%;
@@ -20,5 +25,67 @@
 
   .highlight {
     color: red;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 1200px) {
+    .paragraph {
+        font-size: 60px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .paragraph {
+        font-size: 45px;
+    }
+  }
+
+  @media (max-width: 535px) {
+    .paragraph {
+        font-size: 40px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .paragraph {
+        font-size: 38px;
+    }
+  }
+
+  @media (max-width: 460px) {
+    .paragraph {
+        font-size: 36px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .paragraph {
+        font-size: 34px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .paragraph {
+        font-size: 32px;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .paragraph {
+        font-size: 30px;
+    }
+  }
+
+  @media (max-width: 340px) {
+    .paragraph {
+        font-size: 28px;
+    }
+  }
+
+
+  @media (max-width: 320px) {
+    .paragraph {
+        font-size: 26px;
+    }
   }
   

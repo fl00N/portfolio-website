@@ -37,13 +37,7 @@ const SecondPage = () => {
   return (
     <>
       <div className="textUnderStart">
-        <OpacityText paragraph={paragraph} />
-
-        <GsapMagnetic>
-          <Link to='/projects' className='magneticBtn'>
-            <p>Explore projects</p>
-          </Link>
-        </GsapMagnetic>
+          <OpacityText paragraph={paragraph} />
       </div>
 
     </>

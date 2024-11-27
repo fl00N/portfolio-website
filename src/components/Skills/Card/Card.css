@@ -90,3 +90,52 @@ img {
         transform: translate(-50%, -50%);
     }
 }
+
+/* Media Queries for responsiveness */
+@media (max-width: 1024px) {
+    .card {
+        width: 200px;
+        height: 300px;
+    }
+
+    .card h1 {
+        font-size: 30px;
+    }
+
+    .card p {
+        font-size: 24px;
+        width: 180px;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 160px;
+        height: 220px;
+    }
+
+    .card h1 {
+        font-size: 20px;
+    }
+
+    .card p {
+        font-size: 18px;
+        width: 160px;
+    }
+}
+
+@media (max-width: 425px) {
+    .card {
+        width: 80px;
+        height: 110px;
+    }
+
+    .card h1 {
+        font-size: 10px;
+    }
+
+    .card p {
+        font-size: 8px;
+        width: 140px;
+    }
+}

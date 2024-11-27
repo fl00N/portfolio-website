@@ -1,6 +1,8 @@
 import { useScroll, useTransform, motion } from 'framer-motion';
 import { useRef } from 'react';
 import './OpacityText.css';
+import GsapMagnetic from '../magnetic';
+import { Link } from 'react-router-dom';
 
 export default function OpacityText({ paragraph }) {
 
@@ -33,6 +35,11 @@ export default function OpacityText({ paragraph }) {
         );
       })
     }
+          <GsapMagnetic>
+            <Link to='/projects' className='magneticBtn'>
+              <p>Explore projects</p>
+            </Link>
+          </GsapMagnetic>
     </p>
   )
 }
