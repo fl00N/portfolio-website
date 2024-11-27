@@ -42,7 +42,7 @@ const Navbar = () => {
       delay: 0.5
     }, '<')
     .to('.sub-nav', {
-      bottom: '5%',
+      bottom: '10%',
       opacity: 1,
       duration: 0.5,
       delay: 0.5
