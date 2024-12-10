@@ -12,6 +12,8 @@ const Navbar = () => {
   const [activeLink, setActiveLink] = useState("/");
   const [timeline, setTimeline] = useState(null);
 
+  const isMobile = window.innerWidth <= 768;
+
   useEffect(() => {
     setActiveLink(location.pathname);
   }, [location.pathname]);
@@ -54,7 +56,7 @@ const Navbar = () => {
       .to(
         ".sub-nav",
         {
-          bottom: "5%",
+          bottom: isMobile ? "10%" : "5%",
           opacity: 1,
           duration: 0.5,
           delay: 0.5,
