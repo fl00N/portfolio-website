@@ -56,7 +56,7 @@ const Navbar = () => {
       .to(
         ".sub-nav",
         {
-          bottom: isMobile ? "10%" : "5%",
+          bottom: isMobile ? "20%" : "5%",
           opacity: 1,
           duration: 0.5,
           delay: 0.5,
