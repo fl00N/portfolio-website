@@ -11,6 +11,10 @@
       flex-direction: column;
       color: white;
 
+      @media (max-width: 768px) {
+        top: 150px;
+      }
+
       h1 {
         font-size: clamp(2.5rem, 5vw, 5rem);
       }
