@@ -24,6 +24,8 @@ const FirstPage = () => {
           I'm Andrii Bondar,
           <span>a Frontend developer</span>
         </h1>
+        <h3>From Ukraine</h3>
+        <h3>Based in the UK</h3>
       </div>
     </div>
   );
@@ -31,7 +33,7 @@ const FirstPage = () => {
 
 const SecondPage = () => {
   const paragraph =
-    "I'm a motivated developer with a passion and a commitment to continuous learning. I have built a strong foundation through self-study and hands-on projects.";
+    "I'm a motivated developer with a drive and a commitment to continuous learning. I have built a strong foundation through self-study and hands-on projects.";
 
   return (
     <>
