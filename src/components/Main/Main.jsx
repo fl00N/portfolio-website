@@ -1,10 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import transition from "../Animation/transition";
-import ReactLenis from "@studio-freight/react-lenis";
 import Navbar from "../Navbar/Navbar";
-import Start from "../Start/Start"
-import Skills from "../Skills/DesktopSkills/Skills";
-import MobileSkills from "../Skills/MobileSkills/MobileSkills";
+import Start from "../Start/Start";
+import Skills from "../Skills/Skills";
 import Footer from "../Footer/Footer";
 
 const Main = () => {
@@ -15,24 +13,23 @@ const Main = () => {
       setIsMobile(window.innerWidth < 768);
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     handleResize();
 
-    return () => window.removeEventListener('resize', handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
-    <ReactLenis root>
+    <>
       <Navbar />
 
       <div className="main">
         <Start />
-        {!isMobile ? <Skills /> : <MobileSkills />}
-
-        {!isMobile && <Footer />}
+        <Skills />
+        <Footer />
       </div>
-    </ReactLenis>
-  )
-}
+    </>
+  );
+};
 
-export default transition(Main)
+export default transition(Main);

@@ -1,8 +1,6 @@
 import Shapes from "../3D/StartShapes/Shapes";
 import "./Start.css";
 import OpacityText from "../Animation/OpacityText/OpacityText";
-import GsapMagnetic from "../Animation/magnetic";
-import { Link } from "react-router-dom";
 
 export default function Start() {
   return (

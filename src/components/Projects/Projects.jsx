@@ -1,7 +1,6 @@
 import "./Projects.css";
 import transition from "../Animation/transition";
 import Navbar from "../Navbar/Navbar";
-import { useEffect, useState } from "react";
 
 const projectContent = [
   {

@@ -1,4 +1,4 @@
-import { useScroll, useTransform, motion } from "framer-motion";
+import { useScroll, useTransform, motion, useSpring } from "framer-motion";
 import { useRef } from "react";
 import "./OpacityText.css";
 import GsapMagnetic from "../magnetic";
@@ -57,7 +57,13 @@ const Word = ({ children, progress, range, isHighlight }) => {
 };
 
 const Char = ({ children, progress, range }) => {
-  const opacity = useTransform(progress, range, [0, 1]);
+  const opacityRaw = useTransform(progress, range, [0, 1]);
+
+  const opacity = useSpring(opacityRaw, {
+    stiffness: 100, // чем меньше, тем мягче
+    damping: 20, // затухание колебаний
+    mass: 1, // "тяжесть" объекта
+  });
   return (
     <span>
       <span className="shadow">{children}</span>

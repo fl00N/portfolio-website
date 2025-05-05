@@ -1,56 +1,32 @@
 .footer {
-    width: 100vw;
-    height: 40vh;
+    width: 100%;
+    padding: 3rem 2rem;
+    background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  
+  .footerContent {
+    text-align: center;
+    font-size: 1rem;
+    color: #a0a0a0;
+    letter-spacing: 0.5px;
+    font-weight: 400;
+    max-width: 1000px;
     display: flex;
     flex-direction: column;
-    gap: 4rem;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: rgb(255, 255, 255);
-}
-
-.footerContent {
-    width: 100%;
-    position: fixed;
-    bottom: -30px;
-}
-
-.svgWrapper {
-    position: relative;
-}
-
-.svg {
-    width: 20rem;
-    height: 20rem;
-}
-
-.textPath {
-    font-size: 1.25rem;
-}
-
-.hireMe {
-    font-size: 20px;
-    width: 4rem;
-    height: 4rem;
-    background: black;
-    color: white;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-}
-
-@media (min-width: 768px) {
-    .hireMe {
-        width: 7rem;
-        height: 7rem;
-    }
-}
+    gap: 0.5rem;
+  }
+  
+  .footerContent p {
+    margin: 0;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+  }
+  
+  .footerContent p:hover {
+    opacity: 1;
+  }
+  

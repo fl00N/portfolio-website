@@ -7,11 +7,11 @@ import Navbar from "../Navbar/Navbar";
 import "react-toastify/dist/ReactToastify.css";
 
 const variants = {
-  initial: { y: 500, opacity: 0 },
+  initial: { y: 100, opacity: 0 },
   animate: {
     y: 0,
     opacity: 1,
-    transition: { duration: 0.5, staggerChildren: 0.1 },
+    transition: { duration: 0.6, staggerChildren: 0.2 },
   },
 };
 
@@ -34,7 +34,7 @@ const Contacts = () => {
         whileInView="animate"
       >
         <motion.div className="textContainer" variants={variants}>
-          <motion.h1 variants={variants}>Let’s work together</motion.h1>\
+          <motion.h1 variants={variants}>Let’s work together</motion.h1>
           <div className="linksContainer">
             <motion.div className="item" variants={variants}>
               <a
