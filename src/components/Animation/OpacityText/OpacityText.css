@@ -37,10 +37,6 @@
       }
     }
   }
-
-  .highlight {
-    color: #ff4c4c;
-  }
   
   /* Media Queries */
   @media (max-width: 1200px) {
